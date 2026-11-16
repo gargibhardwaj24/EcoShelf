@@ -1,0 +1,14 @@
+# Optional: real PostgreSQL instead of the embedded one.
+#   docker compose up -d
+#   DATABASE_URL=postgres://ecoshelf:ecoshelf@localhost:5432/ecoshelf npm run server
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ecoshelf
+      POSTGRES_PASSWORD: ecoshelf
+      POSTGRES_DB: ecoshelf
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+volumes:
+  pgdata: {}
